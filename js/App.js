@@ -11,7 +11,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    window.fetch('http://www.omdbapi.com/?s=jaws')
+    fetch('http://www.omdbapi.com/?s=jaws')
       .then((res) => res.json())
       .then((data) => {
         this.setState({ movies: data.Search })
@@ -20,9 +20,15 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Hello World!</h1>
-        <pre><code>Yo {JSON.stringify(this.state.movies)}</code></pre>
+      <div className="ink-grid">
+        <h1>Cinephile</h1>
+        { this.state.movies.map(movie => {
+          return (
+            <div>
+              <h3>{movie.Title} <small>({movie.Year})</small></h3>
+            </div>
+          )
+        })}
       </div>
     )
   }
