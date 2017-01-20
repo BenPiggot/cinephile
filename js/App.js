@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import Movie from './Movie';
 
 class App extends Component {
   constructor() {
@@ -20,15 +21,11 @@ class App extends Component {
 
   render() {
     return (
-      <div className="ink-grid">
+      <div className="container">
         <h1>Cinephile</h1>
-        { this.state.movies.map(movie => {
-          return (
-            <div>
-              <h3>{movie.Title} <small>({movie.Year})</small></h3>
-            </div>
-          )
-        })}
+        <div className="ink-flex">
+          { this.state.movies.map(movie => <Movie {...movie} />) }
+        </div>
       </div>
     )
   }
