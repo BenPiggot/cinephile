@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setSearchTerm, getMovieList } from './actionCreators';
+import Header from './Header';
 
 class Landing extends Component {
   constructor() {
@@ -18,16 +19,16 @@ class Landing extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h1>Cinephile</h1>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <input type='text' 
-            placeholder='Choose a search term'
-            onChange={this.handleSearchTermChange.bind(this)}
-            value={this.props.searchTerm} />
-        </form>
-        <div>
-          { this.props.movies.map(m => <span>{m.Title}</span>) }
+      <div>
+        <Header />
+        <div className="container">
+          <h1>Cinephile</h1>
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <input type='text' 
+              placeholder='Choose a search term'
+              onChange={this.handleSearchTermChange.bind(this)}
+              value={this.props.searchTerm} />
+          </form>
         </div>
       </div>
     )

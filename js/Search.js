@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setSearchTerm, getMovieList } from './actionCreators';
 import Movie from './Movie';
+import Header from './Header';
 
 class Search extends Component {
   constructor() {
@@ -19,16 +20,19 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h1>Search Results</h1>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <input type='text' 
-            placeholder='Choose a search term'
-            onChange={this.handleSearchTermChange.bind(this)}
-            value={this.props.searchTerm} />
-        </form>
-        <div className="ink-flex">
-          { this.props.movies.map(movie => <Movie {...movie} />) }
+      <div>
+        <Header />
+        <div className="container">
+          <h1>Search Results</h1>
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <input type='text' 
+              placeholder='Choose a search term'
+              onChange={this.handleSearchTermChange.bind(this)}
+              value={this.props.searchTerm} />
+          </form>
+          <div className="ink-flex">
+            { this.props.movies.map(movie => <Movie {...movie} />) }
+          </div>
         </div>
       </div>
     )
