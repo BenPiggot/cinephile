@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setSearchTerm, getMovieList } from './actionCreators';
+import Movie from './Movie';
 
-class Landing extends Component {
+class Search extends Component {
   constructor() {
     super();
   }
@@ -19,15 +20,15 @@ class Landing extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Cinephile</h1>
+        <h1>Search Results</h1>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input type='text' 
             placeholder='Choose a search term'
             onChange={this.handleSearchTermChange.bind(this)}
             value={this.props.searchTerm} />
         </form>
-        <div>
-          { this.props.movies.map(m => <span>{m.Title}</span>) }
+        <div className="ink-flex">
+          { this.props.movies.map(movie => <Movie {...movie} />) }
         </div>
       </div>
     )
@@ -53,4 +54,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Landing);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

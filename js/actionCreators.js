@@ -1,5 +1,6 @@
 import 'whatwg-fetch';
-import { SET_SEARCH_TERM, MOVIE_SEARCH_RESULTS } from './actions'
+import { SET_SEARCH_TERM, MOVIE_SEARCH_RESULTS } from './actions';
+import { browserHistory } from 'react-router';
 
 export function setSearchTerm (searchTerm) {
   return { type: SET_SEARCH_TERM, searchTerm }
@@ -15,6 +16,7 @@ export function getMovieList (searchTerm) {
       .then((res) => res.json())
       .then((data) => {
         dispatch(addMovieList(data.Search))
+        browserHistory.push('/search')
       })
   }
 }
