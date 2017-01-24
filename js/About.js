@@ -7,7 +7,7 @@ const About = () => {
       <Header />
       <div className="container">
         <h1>About This Site</h1>
-        <p>....</p>
+        <p>Simple Client-side App utilizing the excellent Omdb movies API. Built using React, Redux, and React Router.</p>
       </div>
     </div>
   )

@@ -5,6 +5,7 @@ import store from './store';
 import Landing from './Landing';
 import About from './About';
 import Search from './Search';
+import MovieDetails from './MovieDetails';
 import { Provider } from 'react-redux';
 
 render(( 
@@ -12,6 +13,7 @@ render((
     <Router history={browserHistory}>
       <Route path='/' component={Landing} />
       <Route path='/search' component={Search} />
+      <Route path='/search/:id' component={MovieDetails} />
       <Route path='/about' component={About} />
     </Router>
   </Provider>
